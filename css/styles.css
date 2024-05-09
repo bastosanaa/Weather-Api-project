@@ -133,3 +133,10 @@ button:hover {
     margin-right: 0.8rem;
     padding-right: 0.8rem;
 }
+
+#error-message {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: red;
+    overflow-wrap: break-word;
+}
