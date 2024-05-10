@@ -24,12 +24,15 @@ body {
 
 .container {
     max-width: 600px;
+    overflow-wrap: break-word;
+
     margin: 0 auto;
     padding: 2rem;
     background-color: var(--primary-color);
     border-radius: 0.8rem;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.24);
     text-align: center;
+
 }
 
 .hidden {
@@ -70,13 +73,20 @@ button:hover {
 
 /* Clima */
 
-#weather-data {
+.weather-data {
     border-top: 2px solid var(--font-color);
     padding-top: 1.5rem;
     margin-top: 1.5rem;
     text-align: center;
     font-size: 1.5rem;
+    min-width: 280px;
+    min-height: 210px;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
 }
+
+
 
 #weather-data h2{
     display: flex;
@@ -139,4 +149,58 @@ button:hover {
     font-size: 1.2rem;
     color: red;
     overflow-wrap: break-word;
+}
+
+#loader-container {
+    min-width: 280px;
+    min-height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid var(--font-color);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+#loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display:grid;
+    -webkit-mask: conic-gradient(from 15deg,#0000,#000);
+    animation: l26 1s infinite steps(12);
+  }
+  #loader,
+  #loader:before,
+  #loader:after{
+    background:
+      radial-gradient(closest-side at 50% 12.5%,
+       var(--secondary-color) 96%,#0000) 50% 0/20% 80% repeat-y,
+      radial-gradient(closest-side at 12.5% 50%,
+      var(--secondary-color) 96%,#0000) 0 50%/80% 20% repeat-x;
+  }
+  #loader:before,
+  #loader:after {
+    content: "";
+    grid-area: 1/1;
+    transform: rotate(30deg);
+  }
+  #loader:after {
+    transform: rotate(60deg);
+  }
+  
+  @keyframes l26 {
+    100% {transform:rotate(1turn)}
+  }
+
+.background-image {
+    position: fixed;
+        top: 0;
+        left: 0;
+        max-width: 100%;
+        height: auto;
+        /* background-size: cover; */
+        background-position: center;
+        background-repeat: no-repeat;
+        object-fit: cover;
+        z-index: -1;
 }
